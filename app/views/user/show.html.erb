@@ -1,0 +1,18 @@
+<div class="container-fluid position-absolute mt-4">
+  <h3 class="text-center font-weight-bold">User informations</h3>
+  <div class="row d-flex justify-content-center">
+    <div class="col-xs">
+      <div class="card shadow-sm alert alert-success">
+        <div class="card-body text-dark">
+          <h5 class="card-title text-center font-weight-bold"><%= @user.first_name %> <%= @user.last_name %></h5>
+          <h5 class="card-title text-center"><span class="badge badge-secondary">Email : <%= @user.email %></span></h5>
+          <h6 class="card-text text-center">Age : <%= @user.age%> </h6>
+          <h6 class="card-text text-center"> Ville : <%= link_to @user.city.name, city_path(@user.city.id) %> </h6>
+          <p class="card-text text-center"><%= @user.description%></p>
+          <p class="card-text text-center"> <%= link_to "Revenir à la liste des potins", root_path %> </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
