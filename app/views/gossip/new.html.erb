@@ -11,25 +11,35 @@
 
 
 
-<div class="card create-potin">
-  <div class="card-header">
+<div class="card container text-center mt-5 border border-success">
+  <div class="card-header" style="background-color: #FFFFFF">
     <h2>Création d'un potin</h2>
   </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
+  <div class="container text-center mt-2" style="text-align:center"> <br/>
       <%= form_tag url_for(action: 'create'), method: "post" do %>
 
-        <%= label_tag 'Titre de ton potin' %>
-        <%= text_field_tag 'title' %>
-        <br /> <br />
+       
+       <div class="form-group">
+        <%= text_field_tag 'title', @gossip.title, class: 'form-control', placeholder: 'Titre' %>
+      </div>
 
-        <%= label_tag 'Description de ton potin' %>
-        <%= text_area_tag 'content' %>
-        <br /> <br />
 
-        <%= submit_tag "Soumet ton potin" %>
 
-      <% end %>
-    </blockquote>
-  </div>
-</div>
+        <div class="form-group">
+       <%= text_area_tag 'content', @gossip.content, class: 'form-control', placeholder: 'Contenu' %>
+      </div>
+
+      <br>
+
+
+       <div class="btn-group mr-2" role="group">
+              <%= submit_tag "Créer ton potin !", class: "btn btn-primary mx-1" %> 
+            </div>
+            <br/>
+            <br>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+     

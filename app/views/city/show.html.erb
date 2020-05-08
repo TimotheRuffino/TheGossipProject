@@ -1,8 +1,8 @@
 <div class="container-fluid position-absolute mt-4">
-  <h3 class="text-center font-weight-bold">City informations</h3>
+  <h3 class="text-center font-weight-bold">Infos ville</h3>
   <div class="row d-flex justify-content-center">
     <div class="col-xs">
-      <div class="card shadow-sm alert alert-success">
+      <div class="card shadow-sm bg-light">
         <div class="card-body text-dark">
           <h5 class="card-title text-center font-weight-bold">Nom : <%= @city.name %> 
           <h6 class="card-text text-center">Code postal : <%= @city.zip_code%> </h6>
@@ -11,6 +11,7 @@
       </div>
     </div>
   </div>
+  <br/>
   <h3>Voici tous les potins pour la ville <%= @city.name %></h3>
 
 <div class="row">
@@ -26,7 +27,7 @@
           <% if gossip.likes.where(user_id: current_user).count > 0 %>
             <%= link_to "Dislike", like_path(:id => gossip.likes.sample), method: :delete, class:"btn btn-danger" %>
           <% else %>
-            <%= link_to "liker", like_index_path(:id => gossip.id), method: :post, class:"btn btn-danger" %>
+            <%= link_to "liker", like_index_path(:id => gossip.id), method: :post, class:"btn btn-success" %>
           <% end %>
           <%= gossip.likes.count %>
         </div>

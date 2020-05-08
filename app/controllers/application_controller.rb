@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     gossip_user = Gossip.find(params[:id]).user
     unless current_user == gossip_user
       flash[:danger] = "Tu n'est pas la bonne personne !"
-      redirect_to gossips_path
+      redirect_to gossip_path
     end
   end
 end

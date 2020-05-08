@@ -8,9 +8,14 @@
 
 .jumbotron {
   margin-bottom: 0px;
-  height: 300px;
+  height: 400px;
   color: white; /* Le texte sera affiché en blanc */
-  text-shadow: black 0.3em 0.3em 0.3em;
-  background:transparent;
+  background-image: url("https://images.pexels.com/photos/568025/pexels-photo-568025.jpeg?cs=srgb&dl=apeure-calme-crainte-depression-568025.jpg&fm=jpg");
+  background-size: cover;
  }
+
+ .font-simply{
+  
+  text-decoration: underline #db3b47;
+}
  

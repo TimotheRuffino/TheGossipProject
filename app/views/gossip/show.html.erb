@@ -1,8 +1,8 @@
 <div class="container-fluid position-absolute mt-4">
   <h3 class="text-center font-weight-bold">Les infos du potin</h3>
   <div class="row d-flex justify-content-center">
-    <div class="col-xs">
-      <div class="card shadow-sm alert alert-success">
+    <div class="col-xs ">
+      <div class="card shadow-sm bg-light">
         <div class="card-body text-dark">
           <h5 class="card-title text-center font-weight-bold"><%= @gossip.title %>
           <h5 class="card-title text-center"><span class="badge badge-secondary"><%= @gossip.content %></span></h5>
@@ -11,11 +11,11 @@
           <h5 class="card-text text-center">Ville : <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id) %> </h5>
 
           <% if @gossip.likes.where(user_id: current_user).count > 0 %>
-          <%= link_to "Dislike", like_path(:id => @gossip.likes.sample), method: :delete, class:"btn btn-danger" %>
+          <p class="card-text text-center"><%= link_to "Dislike", like_path(:id => @gossip.likes.sample), method: :delete, class:"btn btn-danger" %></p>
           <% else %>
-          <%= link_to "liker", like_index_path(:id => @gossip.id), method: :post, class:"btn btn-danger" %>
+          <p class="card-text text-center"><%= link_to "liker", like_index_path(:id => @gossip.id), method: :post, class:"btn btn-success" %></p>
           <% end %>
-          <%= @gossip.likes.count %>
+          
           
           <p class="card-text text-center"><%= link_to "Supprimer", gossip_path(@gossip.id), method: :delete, class:"btn btn-danger"%></p>
           <p class="card-text text-center"> <%= link_to "Revenir à la liste des potins", root_path %> </p>
@@ -25,24 +25,32 @@
   </div>
 </div>
 
-<div class="card create-potin">
-  <div class="card-header">
-    <h2>Tu peux ajouter un commentaire</h2>
+<br>
+<br>
+
+<div class="card container text-center mt-5 border border-success">
+  <div class="card-header" style="background-color: #FFFFFF">
+    <h2> Ajoute ton commentaire !</h2>
   </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
+  <div class="container text-center mt-2" style="text-align:center">
+   
       <%= form_tag url_for(controller: :comment, action: :create, id: @gossip.id), method: "post" do %>
 
-        <%= label_tag 'Ton commentaire' %>
-        <%= text_field_tag 'content' %>
-        <br /> <br />
-        <%= submit_tag "Soumet ton Commentaire" %>
+        
+        <div class="form-group">
+        <%= text_field_tag 'content', @comment, class: 'form-control', placeholder: 'Écris ici...' %>
+      </div>
+
+          <div class="btn-group mr-2" role="group">
+              <%= submit_tag "Poster ton Commentaire", class: "btn btn-primary mx-1" %> 
+            </div>
+       
 
       <% end %>
-    </blockquote>
+      <br>
 
         <% @gossip.comments.each do |comment| %>
-      <h5>A été écrit par <%= comment.user.first_name %> :</h5>
+      <h5>Commentaire écrit par <%= comment.user.first_name %> :</h5>
       <p><%= comment.content %>
       </p>
     <% end %>
